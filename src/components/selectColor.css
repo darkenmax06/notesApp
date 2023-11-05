@@ -1,0 +1,48 @@
+.select-color{
+  background-color: transparent;
+  display: inline-block;
+  border-radius: var(--s);
+  border: 3px solid black;
+  position: relative;
+  font-family: regular;
+}
+
+.select-color__container.active{
+  display: flex;
+}
+
+.select-color__container{
+  position: absolute;
+  width: 200px;
+  top: 60px;
+  left: 0;
+  flex-direction: column;
+  background-color: white;
+  border:  3px solid black;
+  border-radius: var(--s);
+  display: none;
+}
+
+.select-color__box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 8px;
+  user-select: none;
+}
+
+
+.select-color__box:hover:not(.first){
+  outline: 3px solid black;
+  border-radius: var(--s) ;
+  cursor:  pointer;
+}
+
+.select-color__color{
+  width: 30px;
+  height: 30px;
+  background-color: var(--color);
+  border-radius: 50%;
+  border:  2px solid black;
+}

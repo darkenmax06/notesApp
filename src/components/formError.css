@@ -1,0 +1,20 @@
+
+.form-error{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: black;
+  border-radius: var(--xs);
+  padding: var(--xs) var(--s);
+  color: white;
+  font-family: "regular";
+  font-size: 14px;
+  text-align: start;
+}
+
+
+
+.form-error svg{
+  color: white;
+}
+

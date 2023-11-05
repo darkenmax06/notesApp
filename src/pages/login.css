@@ -1,0 +1,102 @@
+.login{
+  background-color: #48e;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  gap: var(--xl);
+  padding: var(--l);
+  position: relative;
+  transition: background .5s;
+}
+
+.login__form{
+  text-align: center;
+  background-color: white;
+  padding: var(--m) var(--l);
+  border: 3px solid black;
+  border-radius: 8px;
+  min-width: 250px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.137);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--l);
+}
+
+.login__title{
+  font-size: var(--l);
+  font-family: "bold";
+  text-transform: uppercase;
+}
+
+.login__inputs{
+  display: flex;
+  flex-direction: column;
+  gap: var(--xs);
+  width: 100%;
+}
+
+.login__input-container{
+  display: flex;
+  flex-direction: row;
+  border: 3px solid black;
+  border-radius: var(--s);
+  padding: var(--xs) var(--s);
+  gap: var(--s);
+  width: 100%;
+}
+
+.login__input-container svg{
+  flex-shrink: 0;
+}
+
+.login__input{
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  border: none;
+  outline: none;
+  font-family: "regular";
+}
+
+.login__input::placeholder{
+  font-family: "regular";
+  text-transform: uppercase;
+  color: black;
+}
+
+.login__signin{
+  font-family: "regular";
+  font-size: 14px;
+}
+
+.login__signin a{
+  color: #48e;
+  text-decoration: none;
+}
+
+.login__button{
+  align-self: center;
+  padding: var(--s) var(--l);
+  background-color: black;
+  border: none;
+  border-radius: var(--s);
+  color: white;
+  font-family: "bold";
+  text-transform: uppercase;
+  box-shadow: 5px 5px 0px 0px rgba(228, 177, 177, 0.137);
+}
+
+.colors{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  gap: var(--xs);
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 450px;
+}

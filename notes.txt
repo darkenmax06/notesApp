@@ -1,0 +1,3 @@
+
+
+- [] Revisar y refactorizar ya que hay 2 componentes de circulo de colores

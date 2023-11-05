@@ -1,0 +1,76 @@
+.modal{
+  place-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(4px);
+  background-color: #ffffffb7;
+  padding: 16px;
+  width: 100%;
+  height: 100vh;
+  font-family: "regular";
+}
+
+.modal__box{
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 8px;
+  border-radius: 16px;
+  border:  3px solid black;
+}
+
+.modal__input{
+  width: 300px;
+  height: 200px;
+  resize: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: var(--s);
+  line-height: 20px;
+  font-family: "regular";
+}
+
+.modal__dates{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal__actions{
+  display: flex;
+  gap: 8px;
+}
+
+.modal__button{
+  padding: var(--s);
+  border-radius: var(--xs);
+  flex-grow: 1;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: var(--s);
+  flex-basis: 0;
+}
+
+
+.modal__button.principal{
+  background-color: black;
+  border: none;
+  color: white;
+  flex-basis: 60px;
+}
+
+.modal__button.secondary{
+  flex-basis: 10px;
+  border: 3px solid black;
+  background: transparent;
+}
+
+
+.modal__error{
+  background-color: black;
+  border-radius: 8px;
+  color: white;
+  width: 300px;
+}

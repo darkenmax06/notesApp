@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "bold";
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "regular";
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf");
+  font-weight: 500;
+}
+
+
+@font-face {
+  font-family: "light";
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf");
+  font-weight: 200;
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  min-width: 300px;
+}
+
+:root{
+  --xs: 8px;
+  --s: 16px;
+  --m: 24px;
+  --l: 32px;
+  --xl: 64px;
+  --xxl: 128px;
+
+  --white: ;
+  --black: ;
+}
