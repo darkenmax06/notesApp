@@ -22,7 +22,9 @@ function Note ({content,colorData, noteId, createAt, deleteNote, editNote}) {
 
   return (
     <li className="note" style={style} >
-      <p className="note__content" >{parsedContent}</p>
+      <p className="note__content" >{
+        parsedContent.map(res => <span className="note__line" key={res} >{res}</span>)
+      }</p>
       <div className="note__info" >
         <span className="note__date" >{date}</span>
         <div className="note__actions">

@@ -9,8 +9,13 @@
 }
 
 .note__content{
-  height: 100px;
+  height: 100%;
+  min-height: 100px;
   word-break: break-all;
+}
+
+.note__line{
+  display: block;
 }
 
 .note__info{
