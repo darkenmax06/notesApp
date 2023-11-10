@@ -1,4 +1,5 @@
 import { Check, Edit } from "lucide-react"
+import { parsedDate } from "../utils/parsedDate"
 import "./note.css"
 
 function Note ({content,colorData, noteId, createAt, deleteNote, editNote}) {
@@ -18,8 +19,8 @@ function Note ({content,colorData, noteId, createAt, deleteNote, editNote}) {
   }
 
   const parsedContent = content.split("\n")
-  const date = new Date(createAt).toLocaleString().split(",")[0]
-
+  const date = parsedDate(createAt)
+  
   return (
     <li className="note" style={style} >
       <p className="note__content" >{

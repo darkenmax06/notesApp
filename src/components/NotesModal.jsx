@@ -1,6 +1,7 @@
 import { forwardRef, useImperativeHandle, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import useNotes from "../hooks/useNotes"
+import { parsedDate } from "../utils/parsedDate"
 import "./notesModal.css"
 
 const NoteModal =  (_, ref) => {
@@ -45,9 +46,6 @@ const NoteModal =  (_, ref) => {
       noteId: noteInfo?.noteId 
     }
 
-    console.log("nota")
-    console.log(newNote)
-
     if(noteInfo == null) createNote(newNote)
     else editNote({newValue: newNote})
 
@@ -74,7 +72,7 @@ const NoteModal =  (_, ref) => {
           maxLength={limit.current}></textarea>
 
         <div className="modal__dates">
-          <span>{noteInfo?.createAt ?? date}</span>
+          <span>{noteInfo?.createAt? parsedDate(noteInfo.createAt) : date}</span>
           <span className="modal__length" >{value.length}/{limit.current}</span>
         </div>
 
