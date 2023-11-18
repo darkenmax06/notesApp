@@ -1,13 +1,14 @@
 import { forwardRef, useImperativeHandle, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import useNotes from "../hooks/useNotes"
+import FormError from './FormError'
 import "./notesModal.css"
 
 const NoteModal =  (_, ref) => {
   const [visibility,setVisibility] = useState(false)
   const [color,setColor] = useState("none")
   const [value,setValue] = useState("")
-  const {createNote,editNote} = useNotes()
+  const {createNote,editNote,error, clearError} = useNotes()
   const limit = useRef(300)
   const [noteInfo,setNoteInfo] = useState(null)
 
@@ -17,6 +18,7 @@ const NoteModal =  (_, ref) => {
   const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
   const  changeVisibility = (data) => {
+    clearError()
     if (data){
       if (data?.noteInfo == null) setColor(data.colorData)
       else {
@@ -45,10 +47,10 @@ const NoteModal =  (_, ref) => {
       noteId: noteInfo?.noteId 
     }
 
-    console.log("nota")
-    console.log(newNote)
-
-    if(noteInfo == null) createNote(newNote)
+    if(noteInfo == null) {
+      const isCreated = createNote(newNote)
+      if (isCreated) return 
+    }
     else editNote({newValue: newNote})
 
     changeVisibility(null)
@@ -77,6 +79,8 @@ const NoteModal =  (_, ref) => {
           <span>{noteInfo?.createAt ?? date}</span>
           <span className="modal__length" >{value.length}/{limit.current}</span>
         </div>
+
+        {error && <FormError error={error} handleClose={clearError} />}
 
         <div className="modal__actions">
           <button className="modal__button principal" >{ noteInfo ? "editar": "crear"}</button>

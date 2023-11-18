@@ -1,10 +1,13 @@
 import { useContext, useMemo, useState } from 'react'
 import { noteContext } from '../context/NoteContext'
 import { createNote as Cnote, getAllNotes, removeNote as rm, updateNote } from "../services/notesServices"
+import { validateNote } from '../utils/validateNote'
 import useUser from './useUser'
 
 export default function useNotes (search) {
+  // este es para filtrar las notas
   const [color,setColor] = useState(null)
+  const [error,setError] = useState("aaaaaaaa aa a aaa a aa a aaaaaaaaaaaaaaaa a a a  ")
   const {notes, addNote, removeNote, changeNote, setNotes} = useContext(noteContext)
   const {token} = useUser()
 
@@ -16,7 +19,16 @@ export default function useNotes (search) {
     }).catch(err => console.log(err))
   }
 
+  const clearError = () => setError(null)
+
   const createNote = ({content, createAt, colorData})=>{
+    const validation = validateNote({content})
+
+    if (validation){
+      setError(validation.error)
+      return "a"
+    }
+
     const newNote = {
       content,
       createAt,
@@ -25,12 +37,10 @@ export default function useNotes (search) {
 
     Cnote(newNote,token)
     .then(res => {
-      console.log("nota creada!!!!!!!")
-      console.log(res)
       addNote(res)
     })
     .catch(err => {
-      console.error(err)
+      setError(err)
     })
 
   }
@@ -76,6 +86,8 @@ export default function useNotes (search) {
     deleteNote,
     editNote,
     getNotes,
-    filterColor
+    filterColor,
+    error,
+    clearError
   }
 }
