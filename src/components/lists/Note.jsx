@@ -30,10 +30,10 @@ function Note ({content,colorData, noteId, createAt, deleteNote, editNote}) {
         <div className="note__actions">
 
           <button className="note__btn secondary" onClick={handleEdit} >
-            <Edit strokeWidth={3} />
+            <Edit strokeWidth={3} size={20} />
           </button>
           <button className="note__btn primary" onClick={handleDelete} >
-            <Check strokeWidth={3} />
+            <Check strokeWidth={3} size={20} />
           </button>
         </div>
       </div>

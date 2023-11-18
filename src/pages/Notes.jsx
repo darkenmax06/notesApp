@@ -1,9 +1,9 @@
 import { useRef } from 'react'
 import '../App.css'
-import Color from '../components/Color'
-import NotesContainer from '../components/NotesContainer'
-import NoteModal from "../components/NotesModal"
-import Menu from '../components/menu'
+import NoteModal from "../components/forms/NotesModal"
+import ColorCicle from '../components/lists/ColorCicle'
+import NotesContainer from '../components/lists/NotesContainer'
+import Menu from '../components/menus/menu'
 import "../services/local/note"
 
 const colors = [
@@ -57,16 +57,19 @@ const colors = [
 
 function Notes() {
   const togableRef = useRef()
-  const handleCreate = ({data})=> togableRef.current.changeVisibility({colorData: data})
+  const handleCreate = ({color})=> {
+    console.log("color",color)
+    togableRef.current.changeVisibility({colorData: color})
+  }
 
   return (
     <section id="App">
       <Menu>{
         colors.map(
-          data => <Color 
+          data => <ColorCicle 
             key={data.code} 
-            data={data}
-            handleCreate={handleCreate}/>
+            color={data}
+            handleClick={handleCreate}/>
         )
       }</Menu>
       <NotesContainer colors={colors} />

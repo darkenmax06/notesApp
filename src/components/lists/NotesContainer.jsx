@@ -1,8 +1,8 @@
 import { Search } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-import useNotes from "../hooks/useNotes"
+import useNotes from "../../hooks/useNotes"
+import NotesModal from "../forms/NotesModal"
 import Note from "./Note"
-import NotesModal from "./NotesModal"
 import SelectColor from "./SelectColor"
 import "./notesContainer.css"
 

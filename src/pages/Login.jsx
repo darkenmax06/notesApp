@@ -1,8 +1,8 @@
 import { LockKeyhole, Mail } from "lucide-react"
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
-import ColorCicle from "../components/ColorCicle"
-import FormError from "../components/FormError"
+import FormError from "../components/errors/FormError"
+import ColorCicle from "../components/lists/ColorCicle"
 import useColors from "../hooks/useColors"
 import useUser from "../hooks/useUser"
 import "./login.css"
@@ -36,9 +36,12 @@ function Login  () {
     }) 
   }
 
-  const changeBackground = (color) => {
-    document.querySelector(".login").style.background = color
+  const changeBackground = ({color}) => {
+    document.querySelector(".login").style.background = color.code
   }
+
+  console.log(colors)
+
 
   return (
     <section className="login">

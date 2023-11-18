@@ -1,7 +1,7 @@
 import { forwardRef, useImperativeHandle, useRef, useState } from "react"
 import { createPortal } from "react-dom"
-import useNotes from "../hooks/useNotes"
-import FormError from './FormError'
+import useNotes from "../../hooks/useNotes"
+import FormError from '../errors/FormError'
 import "./notesModal.css"
 
 const NoteModal =  (_, ref) => {
@@ -18,6 +18,7 @@ const NoteModal =  (_, ref) => {
   const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
   const  changeVisibility = (data) => {
+    console.log(data)
     clearError()
     if (data){
       if (data?.noteInfo == null) setColor(data.colorData)

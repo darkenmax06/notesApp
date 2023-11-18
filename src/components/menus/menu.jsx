@@ -1,6 +1,6 @@
 import { LogOut, Plus } from "lucide-react"
 import { useRef } from "react"
-import useUser from "../hooks/useUser"
+import useUser from "../../hooks/useUser"
 import "./menu.css"
 
 
