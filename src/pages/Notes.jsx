@@ -1,8 +1,8 @@
-import { useRef } from 'react'
+import { useState } from 'react'
 import '../App.css'
 import NoteModal from "../components/forms/NotesModal"
 import ColorCicle from '../components/lists/ColorCicle'
-import NotesContainer from '../components/lists/NotesContainer'
+import NotesContainer from "../components/lists/NotesContainer"
 import Menu from '../components/menus/menu'
 import "../services/local/note"
 
@@ -56,11 +56,9 @@ const colors = [
 
 
 function Notes() {
-  const togableRef = useRef()
-  const handleCreate = ({color})=> {
-    console.log("color",color)
-    togableRef.current.changeVisibility({colorData: color})
-  }
+  const [color,setColor] = useState(null)
+  const showModal = ({color}) => setColor(color)
+  const handleClose = () => setColor(null)
 
   return (
     <section id="App">
@@ -69,11 +67,11 @@ function Notes() {
           data => <ColorCicle 
             key={data.code} 
             color={data}
-            handleClick={handleCreate}/>
+            handleClick={showModal}/>
         )
       }</Menu>
-      <NotesContainer colors={colors} />
-      <NoteModal ref={togableRef}/>
+      <NotesContainer colors={colors} /> 
+      {color !== null && <NoteModal handleClose={handleClose} colorData={color}/>}
     </section>
   )
 }

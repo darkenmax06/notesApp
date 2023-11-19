@@ -7,14 +7,13 @@ import useUser from './useUser'
 export default function useNotes (search) {
   // este es para filtrar las notas
   const [color,setColor] = useState(null)
-  const [error,setError] = useState("aaaaaaaa aa a aaa a aa a aaaaaaaaaaaaaaaa a a a  ")
+  const [error,setError] = useState(null)
   const {notes, addNote, removeNote, changeNote, setNotes} = useContext(noteContext)
   const {token} = useUser()
 
   const getNotes = async ()=>{
     getAllNotes(token)
     .then(res => {
-      console.log(res)
       setNotes(res)
     }).catch(err => console.log(err))
   }
@@ -64,7 +63,6 @@ export default function useNotes (search) {
   }
 
   const filterColor = (color)=>{
-    console.log(color)
     setColor(color)
   }
 

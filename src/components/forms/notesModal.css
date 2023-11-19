@@ -1,4 +1,5 @@
 .modal{
+  display: grid;
   place-content: center;
   position: fixed;
   top: 0;

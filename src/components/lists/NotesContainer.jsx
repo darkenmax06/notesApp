@@ -1,5 +1,5 @@
 import { Search } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import useNotes from "../../hooks/useNotes"
 import NotesModal from "../forms/NotesModal"
 import Note from "./Note"
@@ -7,19 +7,17 @@ import SelectColor from "./SelectColor"
 import "./notesContainer.css"
 
 function NotesContainer({colors}) {
-  const noteModalRef = useRef()
   const [search,setSearch] = useState("")
   const {notes, getNotes, deleteNote, filterColor} = useNotes(search)
+  const [noteData,setNoteData] = useState(null)
 
   useEffect(()=>{
     getNotes()
   },[])
 
   const handleChange = e => setSearch(e.target.value)
-
-  const toggleEditModal = ({noteInfo})=>{
-    noteModalRef.current.changeVisibility({noteInfo})
-  }
+  const toggleEditModal = ({noteInfo})=> setNoteData(noteInfo)
+  const handleClose = () => setNoteData(null)
 
   return (
     <section className="notes">
@@ -54,7 +52,7 @@ function NotesContainer({colors}) {
       </div>
         {notes?.length < 1 && "No hay notas que mostrar"}
         {notes === null && "cargando..."}
-        <NotesModal ref={noteModalRef} />
+        {noteData && <NotesModal noteData={noteData} handleClose={handleClose} />}
     </section>
   )
 }
