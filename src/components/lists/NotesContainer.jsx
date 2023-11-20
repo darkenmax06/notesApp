@@ -6,7 +6,7 @@ import Note from "./Note"
 import SelectColor from "./SelectColor"
 import "./notesContainer.css"
 
-function NotesContainer({colors}) {
+function NotesContainer() {
   const [search,setSearch] = useState("")
   const {notes, getNotes, deleteNote, filterColor} = useNotes(search)
   const [noteData,setNoteData] = useState(null)
@@ -32,7 +32,7 @@ function NotesContainer({colors}) {
             value={search}
             onChange={handleChange} />
         </div>
-          <SelectColor colors={colors} filterColor={filterColor} />
+          <SelectColor filterColor={filterColor} />
       </div>
 
       <div className="notes__container">

@@ -1,8 +1,10 @@
 import { useRef } from "react"
+import useColors from "../../hooks/useColors"
 import "./selectColor.css"
 
-function SelectColor  ({filterColor, colors}) {
+function SelectColor  ({filterColor}) {
   const selectRef = useRef()
+  const {colors} = useColors()
 
   function handleShow (){
     if (selectRef.current){
@@ -28,7 +30,7 @@ function SelectColor  ({filterColor, colors}) {
             <div className="select-color__color" style={{"--color": "white"}} ></div>
             <p>ninguno</p>
           </li>
-        {colors.map(color => (
+        {colors && colors.map(color => (
           <li key={color.code} className="select-color__box" onClick={()=> handleChangeColor({color: color.code})} >
             <div className="select-color__color" style={{"--color": color.code}} ></div>
             <p> {color.name} </p>
