@@ -18,7 +18,6 @@ function Note ({content,colorData, noteId, createAt, deleteNote, editNote}) {
   }
 
   const parsedContent = content.split("\n")
-  const date = new Date(createAt).toLocaleString().split(",")[0]
 
   return (
     <li className="note" style={style} >
@@ -26,7 +25,7 @@ function Note ({content,colorData, noteId, createAt, deleteNote, editNote}) {
         parsedContent.map(res => <span className="note__line" key={res} >{res}</span>)
       }</p>
       <div className="note__info" >
-        <span className="note__date" >{date}</span>
+        <span className="note__date" >{createAt}</span>
         <div className="note__actions">
 
           <button className="note__btn secondary" onClick={handleEdit} >

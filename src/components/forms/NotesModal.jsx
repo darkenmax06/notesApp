@@ -4,16 +4,14 @@ import useNotes from "../../hooks/useNotes"
 import FormError from '../errors/FormError'
 import "./notesModal.css"
 
-const NoteModal =  ({colorData, noteData, handleClose}) => {
+const NotesForm =  ({colorData, noteData, handleClose}) => {
   const [color,setColor] = useState(noteData?.colorData || colorData)
   const [value,setValue] = useState(noteData?.content || "")
   const {createNote,editNote,error, clearError} = useNotes()
   const limit = useRef(300)
   const [noteInfo,setNoteInfo] = useState(noteData)
-  console.log(noteInfo)
 
   const modalColor = {background: color != null ?color.code: "none" }
-
   const date = new Date().toLocaleDateString()
 
   const handleSubmit = event => {
@@ -72,7 +70,11 @@ const NoteModal =  ({colorData, noteData, handleClose}) => {
   )
 }
 
-export default createPortal(
-  NoteModal,
-  document.body
- )
+function NotesModal (props){
+  return createPortal(
+    <NotesForm {...props} />,
+    document.body
+  )
+}
+
+export default NotesModal

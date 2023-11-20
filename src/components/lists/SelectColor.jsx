@@ -29,7 +29,7 @@ function SelectColor  ({filterColor, colors}) {
             <p>ninguno</p>
           </li>
         {colors.map(color => (
-          <li key={color.colorId} className="select-color__box" onClick={()=> handleChangeColor({color: color.code})} >
+          <li key={color.code} className="select-color__box" onClick={()=> handleChangeColor({color: color.code})} >
             <div className="select-color__color" style={{"--color": color.code}} ></div>
             <p> {color.name} </p>
           </li>
